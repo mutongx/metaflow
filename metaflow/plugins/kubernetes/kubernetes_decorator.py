@@ -125,6 +125,7 @@ class KubernetesDecorator(StepDecorator):
         "shared_memory": None,
         "port": None,
         "compute_pool": None,
+        "executable": None,
     }
     package_url = None
     package_sha = None
@@ -441,6 +442,8 @@ class KubernetesDecorator(StepDecorator):
             meta["kubernetes-jobset-name"] = os.environ.get(
                 "METAFLOW_KUBERNETES_JOBSET_NAME"
             )
+
+            meta["fast-bakery-image-name"] = os.environ.get("FASTBAKERY_IMAGE")
 
             # TODO (savin): Introduce equivalent support for Microsoft Azure and
             #               Google Cloud Platform
