@@ -64,15 +64,15 @@ class PyPIStepDecorator(StepDecorator):
         # one here. We can consider introducing a UX where @pypi is able to consume
         # poetry.lock files in the future.
 
-        _supported_virtual_envs = ["conda", "fast-bakery"]  # , "venv"]
+        _supported_virtual_envs = ["conda"]  # , "venv"]
 
         # To placate people who don't want to see a shred of conda in UX, we symlink
         # --environment=pypi to --environment=conda
         _supported_virtual_envs.extend(["pypi"])
 
-        # TODO: Hardcoded for now to support Docker environment.
+        # TODO: Hardcoded for now to support the fast bakery environment.
         # We should introduce a more robust mechanism for appending supported environments, for example from within extensions.
-        _supported_virtual_envs.extend(["docker"])
+        _supported_virtual_envs.extend(["fast-bakery"])
 
         # The --environment= requirement ensures that valid virtual environments are
         # created for every step to execute it, greatly simplifying the @pypi
@@ -117,15 +117,15 @@ class PyPIFlowDecorator(FlowDecorator):
 
         # @pypi uses a conda environment to create a virtual environment.
         # The conda environment can be created through micromamba.
-        _supported_virtual_envs = ["conda", "docker"]
+        _supported_virtual_envs = ["conda"]
 
         # To placate people who don't want to see a shred of conda in UX, we symlink
         # --environment=pypi to --environment=conda
         _supported_virtual_envs.extend(["pypi"])
 
-        # TODO: Hardcoded for now to support Docker environment.
+        # TODO: Hardcoded for now to support the fast bakery environment.
         # We should introduce a more robust mechanism for appending supported environments, for example from within extensions.
-        _supported_virtual_envs.extend(["docker"])
+        _supported_virtual_envs.extend(["fast-bakery"])
 
         # The --environment= requirement ensures that valid virtual environments are
         # created for every step to execute it, greatly simplifying the @conda
